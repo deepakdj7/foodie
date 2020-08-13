@@ -1,5 +1,5 @@
 // Gatsby supports TypeScript natively!
-import React from "react"
+import React, { useState } from "react"
 import { PageProps, Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -38,7 +38,32 @@ const BlogIndex = ({
   pageContext,
 }: PageProps<Data, PageContext>) => {
   const siteTitle = data.site.siteMetadata.title
-  const posts = data.allMarkdownRemark.edges
+  const allPosts = data.allMarkdownRemark.edges
+
+  const emptyQuery = ""
+  const [state, setState] = useState({
+    filteredData: [],
+    query: emptyQuery,
+  })
+  const handleInputChange = event => {
+    const query = event.target.value
+    const posts = data.allMarkdownRemark.edges || []
+    const filteredData = posts.filter(post => {
+      const { description, title } = post.node.frontmatter
+      return (
+        description.toLowerCase().includes(query.toLowerCase()) ||
+        title.toLowerCase().includes(query.toLowerCase())
+      )
+    })
+    setState({
+      query,
+      filteredData,
+    })
+  }
+  const { filteredData, query } = state
+  const hasSearchResults = filteredData && query !== emptyQuery
+  const posts = hasSearchResults ? filteredData : allPosts
+
   const { currentPage, numPages } = pageContext
 
   const isFirst = currentPage === 1
@@ -47,8 +72,17 @@ const BlogIndex = ({
   const nextPage = (currentPage + 1).toString()
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout location={location} title={siteTitle} image="https://expertphotography.com/wp-content/uploads/2019/01/food-photography-blogs-Tacos-Gathering.jpg">
       <SEO title="All posts" />
+      <div className="search-box">
+        <input
+          className="search-input"
+          type="text"
+          aria-label="Search"
+          placeholder="Start cooking..."
+          onChange={handleInputChange}
+        />
+      </div>
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
         return (

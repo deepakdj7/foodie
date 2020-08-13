@@ -1,5 +1,9 @@
 # Leonids Gatsby starter
 
+![gatsby-to-gitpages](./content/assets/gatsby-to-gitpages.png)
+
+# Leonids Gatsby starter
+
 **[Leonids](http://renyuanz.github.io/leonids)** is a clean, fixed sidebar Gatsby starter which is perfect for powering your GitHub hosted blog.
 
 ### Preview

@@ -6,7 +6,7 @@ import { scale } from "../utils/typography"
 import Footer from "./footer"
 import "./global.css"
 
-const Layout = ({ location, title, children }) => {
+const Layout = ({ location, title, image, children }) => {
   const toggle = (
     <ThemeToggler>
       {({ toggleTheme, theme }) => {
@@ -89,7 +89,7 @@ const Layout = ({ location, title, children }) => {
         minHeight: "100vh",
       }}
     >
-      <div className="sidebar">
+      <div className="sidebar" style={{backgroundImage: 'url(' + image + ')'}}>
         <div
           className="md:h-screen p-4 flex flex-col justify-center items-center"
           style={{ minHeight: 200 }}

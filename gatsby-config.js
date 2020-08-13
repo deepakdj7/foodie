@@ -1,15 +1,15 @@
 module.exports = {
   pathPrefix: "/foodie",
   siteMetadata: {
-    title: `leonids`,
+    title: `foodie`,
     author: {
-      name: `Renyuan`,
-      summary: `who is a developer.`,
+      name: `Deepak DJ`,
+      summary: `Foodie developer.`,
     },
     description: `I write about javascript, GraphQL and life.`,
-    siteUrl: `https://renyuanz.github.io/`,
+    siteUrl: `https://deepakdj7.github.io/`,
     social: {
-      twitter: `renyuan814`,
+      twitter: `deepakdj7`,
     },
   },
   plugins: [
@@ -67,7 +67,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`,
+        icon: `content/assets/foodie-icon.png`,
       },
     },
     `gatsby-plugin-react-helmet`,
