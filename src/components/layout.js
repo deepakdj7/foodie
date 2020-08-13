@@ -18,7 +18,7 @@ const Layout = ({ location, title, image, children }) => {
         return (
           <button
             aria-label="theme-switch"
-            className="leading-none p-1"
+            className="leading-none p-1 dark-mode-toggle"
             onClick={() => toggleTheme(isDarkMode ? "light" : "dark")}
           >
             {isDarkMode ? (
@@ -65,6 +65,8 @@ const Layout = ({ location, title, image, children }) => {
           marginBottom: 0,
           marginTop: 0,
           fontFamily: `Montserrat, sans-serif`,
+          position: 'absolute',
+          color: '#fff'
         }}
       >
         <Link
@@ -90,6 +92,7 @@ const Layout = ({ location, title, image, children }) => {
       }}
     >
       <div className="sidebar" style={{backgroundImage: 'url(' + image + ')'}}>
+        <div className="sidebar-overlay"></div>
         <div
           className="md:h-screen p-4 flex flex-col justify-center items-center"
           style={{ minHeight: 200 }}

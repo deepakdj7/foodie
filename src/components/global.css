@@ -94,6 +94,7 @@ button {
   z-index: 10;
   padding: 0 20px 0;
   margin-left: 0;
+  padding-top: 1.5rem;
 }
 
 ul {
@@ -115,6 +116,66 @@ input.search-input {
 input:focus, textarea:focus, select:focus{
   outline: none;
 }
+
+.sidebar-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(22,27,33,.5);
+}
+
+.dark-mode-toggle {
+  position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.back-button{
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  transform: rotate(180deg);
+}
+
+/*.list-image {
+  width: 150px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+}
+
+.list-item {
+  display: flex;
+    flex-direction: row;
+    margin-top: 3.5rem;
+    margin-bottom: 0.85rem;
+    height: 150px;
+}
+
+.list-article {
+  margin: 0px 30px;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.list-article h3, .list-article p {
+  margin: 0px;
+} 
+
+nav {
+  margin-top: 3rem;
+} */
+
+/*@media only screen and (min-width: 1024px) {
+.sidebar-overlay {
+    background: -moz-linear-gradient(top,rgba(22,27,33,0) 0,rgba(22,27,33,.01) 1%,rgba(22,27,33,.7) 70%,rgba(22,27,33,.7) 100%);
+    background: -webkit-linear-gradient(top,rgba(22,27,33,0) 0,rgba(22,27,33,.01) 1%,rgba(22,27,33,.7) 70%,rgba(22,27,33,.7) 100%);
+}
+}*/
 
 @media only screen and (min-width: 768px) {
   .sidebar {
