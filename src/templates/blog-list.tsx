@@ -23,9 +23,6 @@ type Data = {
           title: string
           date: string
           description: string
-          image: {
-            feature: string
-          }
         }
         fields: {
           slug: string
@@ -75,7 +72,7 @@ const BlogIndex = ({
   const nextPage = (currentPage + 1).toString()
 
   return (
-    <Layout location={location} title={siteTitle} image="https://expertphotography.com/wp-content/uploads/2019/01/food-photography-blogs-Tacos-Gathering.jpg">
+    <Layout location={location} title={siteTitle} image="default.jpg">
       <SEO title="All posts" />
       <div className="search-box">
         <input
@@ -172,9 +169,6 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             title
             description
-            image {
-              feature
-            }
           }
         }
       }

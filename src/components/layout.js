@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "gatsby"
+import { Link, graphql, useStaticQuery } from "gatsby"
 import { ThemeToggler } from "gatsby-plugin-dark-mode"
 import { scale } from "../utils/typography"
 
@@ -82,6 +82,42 @@ const Layout = ({ location, title, image, children }) => {
     </>
   )
 
+  /*let imageData = useStaticQuery(graphql`
+    query {
+      file(absolutePath: {regex: "/image/"}, sourceInstanceName: {eq: "blog"}) {
+        childImageSharp {
+          fluid(quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }`)*/
+
+
+    let allImages = useStaticQuery(graphql`
+    query {
+      allFile(filter: {absolutePath: {regex: "/(jpg)|(jpeg)|(png)/"}, sourceInstanceName: {eq: "blog"}}) {
+        edges {
+          node {
+            childImageSharp {
+              fluid( quality: 100) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
+      }
+    }`)
+
+    console.log(allImages)
+
+    let imageSrc = null;
+    allImages.allFile.edges.forEach(imageItem => {
+      if (imageItem.node.childImageSharp?.fluid.src.includes(image)) {
+        imageSrc = imageItem.node.childImageSharp.fluid.src;
+      }
+    });
+
   return (
     <div
       style={{
@@ -91,7 +127,7 @@ const Layout = ({ location, title, image, children }) => {
         minHeight: "100vh",
       }}
     >
-      <div className="sidebar" style={{backgroundImage: 'url(' + image + ')'}}>
+      <div className="sidebar" style={{backgroundImage: 'url(' + imageSrc+ ')'}}>
         <div className="sidebar-overlay"></div>
         <div
           className="md:h-screen p-4 flex flex-col justify-center items-center"

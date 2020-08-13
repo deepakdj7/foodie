@@ -2,10 +2,10 @@
 title: Kajjaya
 date: "2020-07-27T07:26:03.284Z"
 description: "Soul comforting snack handed down carefull from generations."
-categories: [baking, cake]
+categories: [sweet]
 comments: true
 image:
-  feature: https://www.nigella.com/assets/uploads/recipes/public-thumbnail/dark-and-sumptuous-chocolate-c-56ce1526a3e74.jpg
+  feature: /sample.jpg
   credit: DJ
   creditlink: https://www.nigella.com/
 ---

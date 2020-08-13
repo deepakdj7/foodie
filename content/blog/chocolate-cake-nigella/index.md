@@ -5,7 +5,7 @@ description: "Just about everything you'll need to style in the theme: headings,
 categories: [baking, cake]
 comments: true
 image:
-  feature: https://www.nigella.com/assets/uploads/recipes/public-thumbnail/dark-and-sumptuous-chocolate-c-56ce1526a3e74.jpg
+  feature: /dark-and-sumptuous-chocolate-c-56ce1526a3e74.jpg
   credit: Nigella
   creditlink: https://www.nigella.com/
 ---
