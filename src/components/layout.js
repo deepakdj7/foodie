@@ -117,6 +117,7 @@ const Layout = ({ location, title, image, children }) => {
         imageSrc = imageItem.node.childImageSharp.fluid.src;
       }
     });
+    imageSrc = "/foodie" + imageSrc;
 
   return (
     <div
