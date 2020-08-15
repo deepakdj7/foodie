@@ -96,7 +96,7 @@ const Layout = ({ location, title, image, children }) => {
 
     let allImages = useStaticQuery(graphql`
     query {
-      allFile(filter: {absolutePath: {regex: "/(jpg)|(jpeg)|(png)/"}, sourceInstanceName: {eq: "blog"}}) {
+      allFile(filter: {absolutePath: {regex: "/(jpg)|(jpeg)|(png)/"}}) {
         edges {
           node {
             childImageSharp {
@@ -115,7 +115,7 @@ const Layout = ({ location, title, image, children }) => {
         imageSrc = imageItem.node.childImageSharp.fluid.src;
       }
     });
-    imageSrc = "/foodie" + imageSrc;
+    
 
   return (
     <div
