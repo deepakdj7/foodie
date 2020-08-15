@@ -118,6 +118,7 @@ const Layout = ({ location, title, image, children }) => {
       }
     });
     imageSrc = "/foodie" + imageSrc;
+          console.log(imageSrc);
 
   return (
     <div
