@@ -115,10 +115,11 @@ const Layout = ({ location, title, image, children }) => {
     allImages.allFile.edges.forEach(imageItem => {
       if (imageItem.node.childImageSharp?.fluid.src.includes(image)) {
         imageSrc = imageItem.node.childImageSharp.fluid.src;
+        console.log(imageItem, imageSrc);
       }
     });
     imageSrc = "/foodie" + imageSrc;
-          console.log(imageSrc);
+    console.log(imageSrc);
 
   return (
     <div
