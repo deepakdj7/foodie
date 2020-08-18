@@ -1,5 +1,5 @@
 // Gatsby supports TypeScript natively!
-import React, { useState } from "react"
+import React from "react"
 import { PageProps, Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -38,31 +38,7 @@ const BlogIndex = ({
   pageContext,
 }: PageProps<Data, PageContext>) => {
   const siteTitle = data.site.siteMetadata.title
-  const allPosts = data.allMarkdownRemark.edges
-
-  const emptyQuery = ""
-  const [state, setState] = useState({
-    filteredData: [],
-    query: emptyQuery,
-  })
-  const handleInputChange = event => {
-    const query = event.target.value
-    const posts = data.allMarkdownRemark.edges || []
-    const filteredData = posts.filter(post => {
-      const { description, title } = post.node.frontmatter
-      return (
-        description.toLowerCase().includes(query.toLowerCase()) ||
-        title.toLowerCase().includes(query.toLowerCase())
-      )
-    })
-    setState({
-      query,
-      filteredData,
-    })
-  }
-  const { filteredData, query } = state
-  const hasSearchResults = filteredData && query !== emptyQuery
-  const posts = hasSearchResults ? filteredData : allPosts
+  const posts = data.allMarkdownRemark.edges
 
   const { currentPage, numPages } = pageContext
 
@@ -74,15 +50,6 @@ const BlogIndex = ({
   return (
     <Layout location={location} title={siteTitle} image="default.jpg">
       <SEO title="All posts" />
-      <div className="search-box">
-        <input
-          className="search-input"
-          type="text"
-          aria-label="Search"
-          placeholder="Start cooking..."
-          onChange={handleInputChange}
-        />
-      </div>
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
         return (
@@ -90,28 +57,28 @@ const BlogIndex = ({
             <div className="list-image" style={{backgroundImage: 'url(' + node.frontmatter.image.feature + ')'}}>
 
             </div>*/
-            <article className="list-article" key={node.fields.slug}>
-              <header>
-                <h3
-                  style={{
-                    marginBottom: rhythm(1 / 4),
-                  }}
-                >
-                  <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
-                    {title}
-                  </Link>
-                </h3>
-                <small>{node.frontmatter.date}</small>
-              </header>
-              <section>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: node.frontmatter.description || node.excerpt,
-                  }}
-                />
-              </section>
-            </article>
-         /* </div> */
+          <article className="list-article" key={node.fields.slug}>
+            <header>
+              <h3
+                style={{
+                  marginBottom: rhythm(1 / 4),
+                }}
+              >
+                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
+                  {title}
+                </Link>
+              </h3>
+              <small>{node.frontmatter.date}</small>
+            </header>
+            <section>
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: node.frontmatter.description || node.excerpt,
+                }}
+              />
+            </section>
+          </article>
+          /* </div> */
         )
       })}
 

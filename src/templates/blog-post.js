@@ -11,6 +11,8 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   // const siteTitle = data.site.siteMetadata.title
   const { previous, next } = pageContext
 
+  console.log(post.frontmatter.categories);
+
   return (
     <Layout location={location} title={post.frontmatter.title} image={post.frontmatter.image.feature}>
       <SEO
@@ -18,18 +20,18 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         description={post.frontmatter.description || post.excerpt}
       />
       <Link className="back-button"
-      style={{
-        boxShadow: `none`,
-        color: `inherit`,
-      }}
-      to={`/`}>
-        <svg 
+        style={{
+          boxShadow: `none`,
+          color: `inherit`,
+        }}
+        to={`/`}>
+        <svg
           width="35"
           height="35"
           viewBox="0 0 24 24"
           fill="currentColor"
           xmlns="http://www.w3.org/2000/svg">
-            <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path>
+          <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path>
         </svg>
       </Link>
 
@@ -37,12 +39,12 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         <header>
           <h1
             style={{
-              marginBottom: 0,
+              marginBottom: 20,
             }}
           >
             {post.frontmatter.title}
           </h1>
-          <p
+          {/*<p
             style={{
               ...scale(-1 / 5),
               display: `block`,
@@ -50,7 +52,14 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             }}
           >
             {post.frontmatter.date}
-          </p>
+          </p> */}
+          <ul className="tags">
+            {post.frontmatter.categories.map(( node, index ) => {
+              return (
+                <li key={index}><a href="#" className="tag">{node}</a></li>
+              )
+            })}
+          </ul>
         </header>
         <section dangerouslySetInnerHTML={{ __html: post.html }} />
         <hr
@@ -110,6 +119,7 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        categories
         image {
           feature
         }
