@@ -157,7 +157,7 @@ const Layout = ({ location, title, image, children }) => {
         minHeight: "100vh",
       }}
     >
-      <div className="sidebar" style={{ backgroundImage: 'url(' + __dirname + imageSrc + ')' }}>
+      <div className="sidebar" style={{ backgroundImage: 'url(/foodie' + imageSrc + ')' }}>
         <div className="sidebar-overlay"></div>
         <div
           className="md:h-screen p-4 flex flex-col justify-center items-center"
